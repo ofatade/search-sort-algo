@@ -8,8 +8,8 @@ def search():
     title = request.args.get('title')
     find_title = search_video(sort_titles(video_list ), title) 
     if find_title is None:
-        return jsonify("Video not Found"), 404
+        return jsonify({"message": "Video not Found"}), 404
     else:
-        return jsonify(find_title), 200
+        return jsonify({'title_found_in_position': find_title}), 200
 if __name__ == '__main__':
     app.run(debug=True)
